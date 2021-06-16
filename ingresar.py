@@ -14,7 +14,7 @@ class FormularioRegistro(tk.Tk):
         self.minsize(400,300)
 
 def main():
-    app = Formulario-Registro()
+    app = FormularioRegistro()
     app.mainloop()
 
 if __name__ == '__main__':
