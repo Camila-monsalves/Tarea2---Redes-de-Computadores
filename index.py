@@ -171,3 +171,47 @@ def eliminar(NOMBRE_CONTACT):
                     no_encontrado(var)
                 else:
                     TopLevelModify(self.window, modificar)
+                    
+            def agregar():
+                NOMBRE_CONTACT = inbox_NOMBRE_CONTACT.get()
+                TELEFONO = inbox_TELEFONO.get()
+                DIRECCION = inbox_DIRECCION.get()
+                contact_check = [NOMBRE_CONTACT, TELEFONO, DIRECCION]
+                if contact_check == ['', '', '']:
+                    ingresar_contacto()
+                else:
+                    if NOMBRE_CONTACT == '':
+                        NOMBRE_CONTACT = '<Default>'
+                    if TELEFONO == '':
+                        TELEFONO = '<Default>'
+                    if DIRECCION == '':
+                        DIRECCION = '<Default>'
+                    _guardar(NOMBRE_CONTACT, TELEFONO,DIRECCION)
+                    self.tree.insert("", 0, text = str(NOMBRE_CONTACT), values = (str(TELEFONO), str(DIRECCION)))
+                    self.tree.insert("", 0, text = "Nuevo nombre", values = ("Nuevo telefono", "Nueva direccion"))
+                contact_check = []
+                limpiar_inbox()
+
+            def buscar():
+                consulta = []
+                var_buscar = str(combo.get())
+                if var_buscar == 'NOMBRE_CONTACT':
+                    var_inbox = inbox_NOMBRE_CONTACT.get()
+                    posicion = 0
+                    consulta = _buscar(var_inbox, posicion)
+                    _check(consulta, var_buscar)
+                elif var_buscar == 'TELEFONO':
+                    var_inbox = inbox_TELEFONO.get()
+                    posicion = 1
+                    consulta = _buscar(var_inbox, posicion)
+                    _check(consulta, var_buscar)
+                else:
+                    var_inbox = inbox_DIRECCION.get()
+                    posicion = 2
+                    consulta = _buscar(var_inbox, posicion)
+                    _check(consulta, var_buscar)
+                limpiar_inbox()
+
+            
+            def show_contacto():
+                visualizar_csv()
