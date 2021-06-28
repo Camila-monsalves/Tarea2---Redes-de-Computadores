@@ -1,39 +1,29 @@
 import pandas as pd
 import webbrowser
 import os
+from tkinter import *
+from tkinter import ttk
+import tkinter as tk
+from tkinter import messagebox as MessageBox
+import csv
 
-''' agenda = pd.DataFrame({
-    "Nombre":["Vania","Camila","Luis"],
-    "Teléfono":[133,132,131],
-    "Dirección":["Calle falsa 123","Hualpen","San Pedro"]
+def no_encontrado(var):
+    var_s = str(var)
+    MessageBox.showinfo("No Found", var_s + ' ' + "No encontrado")
 
-}
-) '''
-def agenda():
-    contactos = []
-    class contact():
-        ID              = ""
-        NOMBRE_CONTACT  = ""
-        TELEFONO        = ""
-        DIRECCION       = ""
-    while True:
-        print("Bienvenido a la Agenda");
-        print("Presione '1' Si desea agregar un nuevo contacto");
-        print("Presione '2' Si desea visualizar un contacto");
-        print("Presione '3' Si desea eliminar un contacto");
-        seleccion = input("Seleccione una opción de las indicadas: ");
-        
-        if seleccion == "1" :
-            print("Bienvenido a la seccion 'Agregar Contacto'");
-            contacto                = contact()
-            contacto.ID             = input("Ingrese un identificador al nuevo contacto:  ");
-            contacto.NOMBRE_CONTACT = input("Ingrese el nombre al nuevo contacto:         ");
-            contacto.TELEFONO       = input("Ingrese el telefono al nuevo contacto:       ");
-            contacto.DIRECCION      = input("Ingrese la dirección al nuevo contacto:      ");
-            contactos.append(contacto)
-        elif seleccion == "2" :
-            """ AQUI FAlTA """
-''' agenda = pd.read_csv("agenda_tarea2.csv", sep = ';')
-print(agenda) '''
-agenda() 
+def ingresar_NOMBRE_CONTACT():
+    MessageBox.showinfo("No se encuentra un contacto", "Ingrese nombres")
 
+def ingresar_contacto():
+    MessageBox.showinfo("Ingrese un contacto", "Ingrese los datos")
+
+def eliminar(NOMBRE_CONTACT):
+    var_NOMBRE_CONTACT = str(NOMBRE_CONTACT)
+    if var_NOMBRE_CONTACT == '':
+        ingresar_NOMBRE_CONTACT()
+    else:
+        buscar = MessageBox.askquestion("Delete alert","¿Desea eliminar contacto\n" + var_NOMBRE_CONTACT)
+        if buscar == "yes":
+            return True
+        else:
+            return False
