@@ -28,7 +28,7 @@ def eliminar(NOMBRE_CONTACT):
         else:
             return False
         
-    class App():
+class App():
         def __init__(self, root):
             self.window = root
         
@@ -164,13 +164,14 @@ def eliminar(NOMBRE_CONTACT):
                     self.tree.insert("", 0, text = "Buscar resultado por nombre", values = ("Buscar resultado por telefono", "Buscar resultado por dirección"))
          
 
-            def _check_1(consulta,var_buscar):
-                modificar = consulta
-                var = var_buscar
-                if modificar == []:
-                    no_encontrado(var)
-                else:
-                    TopLevelModify(self.window, modificar)
+            #def _check_1(consulta,var_buscar):
+            
+            #    modificar = consulta
+            #    var = var_buscar
+              #  if modificar == []:
+             #       no_encontrado(var)
+            #    else:
+            #        TopLevelModify(self.window, modificar)
                     
             def agregar():
                 NOMBRE_CONTACT = inbox_NOMBRE_CONTACT.get()
@@ -215,3 +216,21 @@ def eliminar(NOMBRE_CONTACT):
             
             def show_contacto():
                 visualizar_csv()
+            
+            def _eliminar():
+                NOMBRE_CONTACT = str(inbox_NOMBRE_CONTACT.get())
+                a = eliminar(NOMBRE_CONTACT)
+                if a == True:
+                    with open('agenda_tarea2.csv', 'r') as f:
+                        leer = list(csv.leer(f))
+                    with open('agenda_tarea2.csv', 'w') as f:
+                        writer = csv.writer(f, lineterminator ='\r', delimiter=',')
+                        for i, row in enumerate(leer):
+                            if NOMBRE_CONTACT != row[0]:
+                                writer.writerow(row)
+                limpiar()
+                show_contacto()
+
+            def limpiar():
+                limpiar_inbox()
+                limpiar_treeview()
