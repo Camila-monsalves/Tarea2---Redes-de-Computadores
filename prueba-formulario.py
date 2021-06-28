@@ -1,5 +1,4 @@
 import tkinter
-import pandas as pd 
 principal = tkinter.Tk()
 principal.title('Agenda')
 
