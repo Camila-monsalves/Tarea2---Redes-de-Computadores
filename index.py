@@ -82,6 +82,21 @@ def eliminar(NOMBRE_CONTACT):
             show_contacto_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
             show_contacto_button.grid(row = 14, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
         
+            # --------------- Boton para limpiar la pantalla de la agenda -----------------
+            guardar_cammbios_button = Button(inbox_frame, command = lambda: limpiar(), text = 'Limpiar vista', width = 20)
+            guardar_cammbios_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
+            guardar_cammbios_button.grid(row = 16, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
+
+           
+            buscar_button = Button(inbox_frame, command = lambda: buscar(), text = 'Buscar contacto por:', width = 20)
+            buscar_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
+            buscar_button.grid(row = 18, column = 0, padx = 3, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
+          
+            combo = ttk.Combobox(inbox_frame, state = 'readonly', width = 17, justify = 'center', font = ("Calibri", "10", "normal"))
+            combo["values"] = ['NOMBRE_CONTACT', 'TELEFONO', 'DIRECCION']
+            combo.grid(row = 18, column = 1, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación las opciones de busqueda--
+            combo.current(0)
+        
             self.tree = ttk.Treeview(three_frame, height = 20, columns = ("DOS","TRES"))
             self.tree.grid(padx = 5, pady = 5, row = 0, column = 0, columnspan = 1)
             self.tree.heading("#0", text = 'NOMBRE_CONTACT', anchor = CENTER)
