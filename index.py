@@ -45,3 +45,46 @@ def visualizar_csv():
         TELEFONO = str(row[1])
         DIRECCION = str(row[2])
         self.tree.insert("", 0, text = NOMBRE_CONTACT, values = (TELEFONO, DIRECCION))
+        
+def _guardar(NOMBRE_CONTACT, TELEFONO, DIRECCION):
+            s_NOMBRE_CONTACT = NOMBRE_CONTACT
+            s_TELEFONO = TELEFONO
+            s_DIRECCION = DIRECCION
+            with open('agenda_tarea2.csv', 'a') as f:
+                writer = csv.writer(f, lineterminator ='\r', delimiter=',')
+                writer.writerow( (s_NOMBRE_CONTACT, s_TELEFONO,s_DIRECCION) )
+
+def _buscar(var_inbox, posicion):
+            lista = []
+            s_var_inbox = str(var_inbox)
+            var_posicion = int(posicion)
+            with open('agenda_tarea2.csv', 'r') as f:
+                leer = csv.leer(f)
+                for i, row in enumerate(leer):
+                    if s_var_inbox == row[var_posicion]:
+                        lista = [row[0], row[1], row[2]]
+                        break
+                    else:
+                        continue
+            return lista
+
+def _check(consulta, var_buscar):
+            lista_consulta = consulta
+            var_buscar = var_buscar
+            if lista_consulta == []:
+                no_encontrado(var_buscar)
+            else:
+                NOMBRE_CONTACT = str(lista_consulta[0])
+                TELEFONO = str(lista_consulta[1])
+                DIRECCION = str(lista_consulta[2])
+                self.tree.insert("", 0, text = NOMBRE_CONTACT, values = (TELEFONO, DIRECCION))
+                self.tree.insert("", 0, text = "Buscar resultado por nombre", values = ("Buscar resultado por telefono", "Buscar resultado por dirección"))
+         
+
+def _check_1(consulta,var_buscar):
+            modificar = consulta
+            var = var_buscar
+            if modificar == []:
+                no_encontrado(var)
+            else:
+                TopLevelModify(self.window, modificar)
