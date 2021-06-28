@@ -103,6 +103,14 @@ def eliminar(NOMBRE_CONTACT):
             self.tree.heading("DOS", text = 'TELEFONO', anchor = CENTER)
             self.tree.heading("TRES", text = 'DIRECCION', anchor = CENTER)
             
+            scrollVert = Scrollbar(three_frame, command = self.tree.yview)
+            self.tree.configure(yscrollcommand = scrollVert.set)
+            scrollVert.grid(row = 0, column = 1, sticky = "nsew")
+
+            scroll_x = Scrollbar(three_frame, command = self.tree.xview, orient = HORIZONTAL)
+            self.tree.configure(xscrollcommand = scroll_x.set)
+            scroll_x.grid(row = 2, column = 0, columnspan = 1, sticky = "nsew")
+            
             def limpiar_inbox():
                 inbox_NOMBRE_CONTACT._eliminar(0, 'end')
                 inbox_TELEFONO._eliminar(0, 'end')
