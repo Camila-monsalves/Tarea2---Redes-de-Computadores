@@ -29,19 +29,19 @@ def eliminar(NOMBRE_CONTACT):
         
         
 def limpiar_inbox():
-            inbox_NOMBRE_CONTACT._eliminar(0, 'end')
-            inbox_TELEFONO._eliminar(0, 'end')
-            inbox_DIRECCION._eliminar(0, 'end')
+    inbox_NOMBRE_CONTACT._eliminar(0, 'end')
+    inbox_TELEFONO._eliminar(0, 'end')
+    inbox_DIRECCION._eliminar(0, 'end')
 
-        def limpiar_treeview():
-            tree_lista = self.tree.get_children()
-            for item in tree_lista:
-                self.tree._eliminar(item)
+def limpiar_treeview():
+    tree_lista = self.tree.get_children()
+    for item in tree_lista:
+    self.tree._eliminar(item)
 
-        def visualizar_csv():
-            contacto = orden_alfabetico.orden_alfabetico()
-            for i, row in enumerate(contacto):
-                NOMBRE_CONTACT = str(row[0])
-                TELEFONO = str(row[1])
-                DIRECCION = str(row[2])
-                self.tree.insert("", 0, text = NOMBRE_CONTACT, values = (TELEFONO, DIRECCION))
+def visualizar_csv():
+    contacto = orden_alfabetico.orden_alfabetico()
+    for i, row in enumerate(contacto):
+        NOMBRE_CONTACT = str(row[0])
+        TELEFONO = str(row[1])
+        DIRECCION = str(row[2])
+        self.tree.insert("", 0, text = NOMBRE_CONTACT, values = (TELEFONO, DIRECCION))
