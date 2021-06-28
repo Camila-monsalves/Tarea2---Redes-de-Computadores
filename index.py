@@ -67,26 +67,26 @@ def eliminar(NOMBRE_CONTACT):
             Label(inbox_frame, text = '\n\n', font = ("Calibri", "11", "normal")).grid(row = 7, column = 0)
             
             Label(inbox_frame, text = 'MENÚ DE LA AGENDA\n', font = ("Calibri", "13", "normal")).grid(row = 9, column = 0)
-        # --------------- Boton para añadir un contacto -----------------
-        ingresar_button = Button(inbox_frame, command = lambda: agregar(), text = 'Ingrese un contacto', width = 20)
-        ingresar_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
-        ingresar_button.grid(row = 10, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
+            # --------------- Boton para añadir un contacto -----------------
+            ingresar_button = Button(inbox_frame, command = lambda: agregar(), text = 'Ingrese un contacto', width = 20)
+            ingresar_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
+            ingresar_button.grid(row = 10, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
         
-        # --------------- Boton para eliminar un contacto -----------------
-        _eliminar_button = Button(inbox_frame, command = lambda: _eliminar(), text = 'Eliminar contacto', width = 20)
-        _eliminar_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
-        _eliminar_button.grid(row = 12, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
+            # --------------- Boton para eliminar un contacto -----------------
+            _eliminar_button = Button(inbox_frame, command = lambda: _eliminar(), text = 'Eliminar contacto', width = 20)
+            _eliminar_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
+            _eliminar_button.grid(row = 12, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
         
-        # --------------- Boton para mostrar todos los contacto -----------------
-        show_contacto_button = Button(inbox_frame, command = lambda: show_contacto(), text = 'Ver todos los contactos', width = 20)
-        show_contacto_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
-        show_contacto_button.grid(row = 14, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
+            # --------------- Boton para mostrar todos los contacto -----------------
+            show_contacto_button = Button(inbox_frame, command = lambda: show_contacto(), text = 'Ver todos los contactos', width = 20)
+            show_contacto_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
+            show_contacto_button.grid(row = 14, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
         
-        self.tree = ttk.Treeview(three_frame, height = 20, columns = ("DOS","TRES"))
-        self.tree.grid(padx = 5, pady = 5, row = 0, column = 0, columnspan = 1)
-        self.tree.heading("#0", text = 'NOMBRE_CONTACT', anchor = CENTER)
-        self.tree.heading("DOS", text = 'TELEFONO', anchor = CENTER)
-        self.tree.heading("TRES", text = 'DIRECCION', anchor = CENTER)
+            self.tree = ttk.Treeview(three_frame, height = 20, columns = ("DOS","TRES"))
+            self.tree.grid(padx = 5, pady = 5, row = 0, column = 0, columnspan = 1)
+            self.tree.heading("#0", text = 'NOMBRE_CONTACT', anchor = CENTER)
+            self.tree.heading("DOS", text = 'TELEFONO', anchor = CENTER)
+            self.tree.heading("TRES", text = 'DIRECCION', anchor = CENTER)
             
             def limpiar_inbox():
                 inbox_NOMBRE_CONTACT._eliminar(0, 'end')
