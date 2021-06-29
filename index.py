@@ -90,7 +90,7 @@ class App():
         
         Label(inbox_frame, text = 'MENÚ DE LA AGENDA\n', font = ("Calibri", "13", "normal")).grid(row = 9, column = 0)
         # --------------- Boton para añadir un contacto -----------------
-        ingresar_button = Button(inbox_frame, command = lambda: add(), text = 'Ingrese un contacto', width = 20)
+        ingresar_button = Button(inbox_frame, command = lambda: agregar(), text = 'Ingrese un contacto', width = 20)
         ingresar_button.configure(cursor = 'hand2', font = ("Calibri", "10", "normal"))
         ingresar_button.grid(row = 10, column = 0, padx = 2, pady = 3, sticky = W + E) #-- da las coordenadas de ubicación del boton--
         
@@ -204,7 +204,7 @@ class App():
                 TopLevelModify(self.window, val_modify)
 
         # ----------------- Funciones de cada boton ------------------
-        def add():
+        def agregar():
             NOMBRE_CONTACT = inbox_NOMBRE_CONTACT.get()
             TELEFONO = inbox_TELEFONO.get()
             DIRECCION = inbox_DIRECCION.get()
