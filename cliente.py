@@ -4,7 +4,10 @@
 
 import socket
 import sys
+import pandas as pd
+import csv
 
+        
 if len(sys.argv) != 3:
     print ("Agregar la IP del servidor y el puerto donde se ofrece el servicio.")
     sys.exit(0)
@@ -44,7 +47,11 @@ def agenda():
             contacto.DIRECCION      = input("Ingrese la dirección al nuevo contacto:      ");
             contactos.append(contacto)
         elif seleccion == "2" :
-            print("Bienvenido a la seccion 'Visualizar Contacto'")
+            print("Bienvenido a la seccion 'Visualizar Contacto'");
+            with open('agenda_tarea2.csv') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    print(row['NOMBRE_CONTACT'], row['TELEFONO'], row['DIRECCION'])
         elif seleccion == "3" :
             print("Bienvenido a la seccion 'Eliminar Contacto'");
             
