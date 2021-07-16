@@ -23,6 +23,34 @@ except:
 
 print ("\nConectado, escriba finalizar() para terminar la conección.\n")
 
+def agenda():
+    contactos = []
+    class contact():
+        NOMBRE_CONTACT  = ""
+        TELEFONO        = ""
+        DIRECCION       = ""
+    while True:
+        print("Bienvenido a la Agenda");
+        print("Presione '1' Si desea agregar un nuevo contacto");
+        print("Presione '2' Si desea visualizar un contacto");
+        print("Presione '3' Si desea eliminar un contacto");
+        seleccion = input("Seleccione una opción de las indicadas: ");
+
+        if seleccion == "1" :
+            print("Bienvenido a la seccion 'Agregar Contacto'");
+            contacto                = contact()
+            contacto.NOMBRE_CONTACT = input("Ingrese el nombre al nuevo contacto:         ");
+            contacto.TELEFONO       = input("Ingrese el telefono al nuevo contacto:       ");
+            contacto.DIRECCION      = input("Ingrese la dirección al nuevo contacto:      ");
+            contactos.append(contacto)
+        elif seleccion == "2" :
+            print("Bienvenido a la seccion 'Visualizar Contacto'")
+        elif seleccion == "3" :
+            print("Bienvenido a la seccion 'Eliminar Contacto'");
+            
+''' agenda = pd.read_csv("agenda_tarea2.csv", sep = ';')
+print(agenda) '''
+''' agenda()  '''
 try:
     while True:
         mensaje = str(input("Yo >> "))
