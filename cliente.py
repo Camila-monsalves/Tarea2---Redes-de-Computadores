@@ -78,6 +78,8 @@ try:
                 print("Nombre del contacto: ")
                 nombre_contact = input()
                 socket_cliente.send(nombre_contact.encode("utf-8"))
+                datos = socket_cliente.recv(1024).decode('utf-8')
+                print(datos)
                 
             elif opcionBusqueda == str(6):
                 print("Número del contacto: ")
