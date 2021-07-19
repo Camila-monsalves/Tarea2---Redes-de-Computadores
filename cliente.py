@@ -53,7 +53,7 @@ agenda()
 try:
     while True:
         opciones =  str(input("Ingrese la opcion: "))
-        opciones = str(input("Yo >> "))
+        
         socket_cliente.send(opciones.encode("utf-8"))
         
         if opciones == 1:
