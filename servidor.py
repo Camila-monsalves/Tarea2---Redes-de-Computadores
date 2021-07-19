@@ -43,22 +43,22 @@ try:
 
         while True:
             try:
-                recibido = socket_cliente.recv(1024).decode('utf-8')
-                print (direccion_cliente[0] + " >> ", + recibido)
-                if recibido == 4:
+                opciones = socket_cliente.recv(1024).decode('utf-8')
+                print (direccion_cliente[0] + " >> ", + opciones)
+                if opciones == 4:
                     print ("Cliente finalizo la conexion.")
                     print ("Cerrando la conexion con el cliente ...")
                     socket_cliente.close()
                     print ("Conexion con el cliente cerrado.")
                     break
-                elif recibido == 1:
-                    respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
+                elif opciones == 1:
+                    respuesta_servidor = direccion_cliente[0] + " envio: " + opciones
                     socket_cliente.send(respuesta_servidor.encode("utf-8"))
                     print("El cliente escogio agregar un nuevo contacto")
                 
-                elif recibido == 2:
+                elif opciones == 2:
                     print("El cliente escogio buscar un contacto")
-                    respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
+                    respuesta_servidor = direccion_cliente[0] + " envio: " + opciones
                     socket_cliente.send(respuesta_servidor.encode("utf-8"))
                 
             except socket.error:

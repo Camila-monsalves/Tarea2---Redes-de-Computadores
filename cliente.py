@@ -70,8 +70,8 @@ try:
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
                         writer = csv.writer(f, lineterminator ='\r')
                         writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )
-                recibido = socket_cliente.recv(1024).decode('utf-8')
-                print("Servidor >>" + recibido)
+                opciones = socket_cliente.recv(1024).decode('utf-8')
+                print("Servidor >>" + opciones)
                 
         
             
