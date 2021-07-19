@@ -73,7 +73,7 @@ try:
             
         elif opciones == str(2):
             busqueda()
-            opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
+            opcionBusqueda = str(input("¿Por qué opción desea buscar?\n"));
             if opcionBusqueda == str(5): 
                 print("Nombre del contacto: ")
                 nombre_contact = input()
