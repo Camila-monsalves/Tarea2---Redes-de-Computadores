@@ -52,9 +52,10 @@ agenda()
     
 try:
     while True:
-        mensaje = str(input("Yo >> "))
-        socket_cliente.send(mensaje.encode("utf-8"))
-        opciones =  int(input("Ingrese la opcion: "))
+        opciones =  str(input("Ingrese la opcion: "))
+        opciones = str(input("Yo >> "))
+        socket_cliente.send(opciones.encode("utf-8"))
+        
         if opciones == 1:
             print("Ingrese el nombre del contacto");
             nombre_contact      = input()
