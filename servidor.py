@@ -65,14 +65,17 @@ try:
                 elif recibido == str(2):
                     busqueda = socket_cliente.recv(1024).decode('utf-8')
                     print("El cliente escogio buscar un contacto")
-                    print(busqueda)
+                    print("nombre a buscar", busqueda)
+                    bandera = False
                     for i in agenda:
                         print(i)
                         print(i[0])
                         if str(i[0]) == str(busqueda):
-                            socket_cliente.send(str(i).encode("utf-8"))
-                        else:
-                            socket_cliente.send("Cliente no encontrado".encode("utf-8"))
+                            bandera = True
+                    if bandera:
+                        socket_cliente.send(str(i).encode("utf-8"))
+                    else:
+                        socket_cliente.send("Cliente no encontrado".encode("utf-8"))
                 
             except socket.error:
                 print ("Conexion terminada abruptamente por el cliente.")
