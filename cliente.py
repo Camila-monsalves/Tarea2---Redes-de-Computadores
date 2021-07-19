@@ -23,7 +23,9 @@ try:
 except:
     print ("No se puede conectar con el servidor.", IP, " en el puerto ", PUERTO)
     sys.exit(0)
+         
 
+print ("\nConectado, escriba finalizar() para terminar la conexión.\n")
 
 def agenda():
     print("AGENDA");
@@ -38,9 +40,10 @@ def busqueda():
     print("Presione '7' Si desea realizar una busqueda por direccion");
     
 def eliminar():
-    print("'Presione 8' Si desea Eliminar por nombre");
-    print("'Presione 9' Si desea Eliminar por número");
-
+    print("Presione '8' Si desea eliminar por nombre");
+    print("Presione '9' Si desea eliminar por telefono");
+    print("Presione '10' Si desea eliminar por direccion");
+    
 agendaContact     = []
 nombre_contact    = []
 telefono_contact  = []
@@ -48,64 +51,101 @@ direccion_contact = []
 
 opciones       = 0
 opcionBusqueda = 0
+opcionEliminar = 0
 agenda()
 
 while opciones != 4:
-    opciones =  int(input("Ingrese la opcion"))
+    opciones =  int(input("Ingrese la opcion: "))
     if opciones == 1:
         print("Ingrese el nombre del contacto");
         nombre_contact      = input()
+        
         print("Ingrese el numero de teléfono del contacto");
         telefono_contact    = input()
+      
         print("Ingrese la direccion del contacto");
-        direccion_contact   = input()
+        direccion_contact   = input() 
         with open('agenda.csv', 'a') as f:
                 writer = csv.writer(f, lineterminator ='\r')
                 writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )
+        
+        
+            
     elif opciones == 2:
         busqueda()
-        opcionBusqueda = input("¿Por qué opción desea buscar?\n");
+        opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
         if opcionBusqueda == 5: 
-            nombre_contact = input("Nombre contacto buscado:")
-            if nombre_contact in telefono_contact: 
-                print("Telefono:", telefono_contact[nombre_contact]);
-            else:
-                print("La busqueda no arroja nada");
-                          
-        elif opcionBusqueda == 6:
-            telefono_contact = input("Telefono contacto buscado:")
-            if telefono_contact in nombre_contact:
-                print("Nombre:", nombre_contact[telefono_contact]);
-            else:
-                print("La busqueda no arroja nada");
+            print("Nombre del contacto: ")
+            nombre_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if nombre_contact == row[0]:
+                        print(','.join(row))
         
+        elif opcionBusqueda == 6:
+            print("Número del contacto: ")
+            telefono_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if telefono_contact == row[1]:
+                        print(','.join(row))
+                
         elif opcionBusqueda == 7:
-            direccion_contact = input("Direccion del contacto buscado:")
-            if direccion_contact in nombre_contact:
-                print("Nombre:", direccion_contact[nombre_contact]);
-            else:
-                print("La busqueda no arroja nada");
+            print("Dirección del contacto: ")
+            direccion_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if direccion_contact == row[2]:
+                        print(','.join(row))
+                        
     elif opciones == 3:
         eliminar()
-        opcionEliminar = input("")
-        if opcionEliminar == 8:
-            nombre_contact = input("Nombre: ")
-            if nombre_contact not in agendaContact[0:100]:
-                print('Contacto eliminado con exito');
-            else:
-                print("No existe el nombre a eliminar");
-                
-        elif opcionEliminar == 9:
-            telefono_contact = input("Número: ")
-            if telefono_contact not in agendaContact[0:100]:
-                print('Contacto eliminado con exito');
-            else:
-                print("No existe el nombre a eliminar");
+        opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
+        if opcionEliminar == 8: 
+            print("Nombre del contacto: ")
+            nombre_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+            with open('agenda.csv', 'w') as f:
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if nombre_contact != row[0]:
+                        writer.writerow(row)
+            print("contacto eliminado")
             
+        elif opcionEliminar == 9: 
+            print("Telefono del contacto: ")
+            telefono_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+            with open('agenda.csv', 'w') as f:
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if telefono_contact != row[1]:
+                        writer.writerow(row)
+            print("contacto eliminado")
             
+        elif opcionEliminar == 10: 
+            print("Dirección del contacto: ")
+            direccion_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+            with open('agenda.csv', 'w') as f:
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if direccion_contact != row[2]:
+                        writer.writerow(row)
+            print("contacto eliminado")
+        
+    elif opciones == 4:
+        break
             
-
-print ("\nConectado, escriba finalizar() para terminar la conección.\n")
 try:
     while True:
         mensaje = str(input("Yo >> "))
@@ -118,7 +158,7 @@ try:
 except socket.error:
     print ("Se perdio la conexion con el servidor.")
 except KeyboardInterrupt:
-    print ("\nSe interrunpio el cliente con un Control_C.")
+    print ("\nSe interrumpio el cliente con un Control_C.")
 
 finally:
     print ("Terminando conexion con el servidor ...")
