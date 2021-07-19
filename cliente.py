@@ -57,6 +57,7 @@ try:
     while True:
         while opciones != 4:
             opciones =  int(input("Ingrese la opcion: "))
+            socket_cliente.send(opciones.encode("utf-8"))
             if opciones == 1:
                 recibido = socket_cliente.recv(1024).decode('utf-8')
                 print("Servidor >>" + recibido)
