@@ -1,5 +1,6 @@
 import socket
 import sys
+import ast
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -56,7 +57,7 @@ try:
                     datos_agenda = socket_cliente.recv(1024).decode('utf-8')
                     print("Datos ingresados: ", datos_agenda)
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
-                    lista_datos = list(datos_agenda)
+                    lista_datos = ast.literal_eva(datos_agenda)
                     print(lista_datos)
                 
                 elif recibido == 2:
