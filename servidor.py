@@ -51,7 +51,7 @@ try:
                     socket_cliente.close()
                     print ("Conexion con el cliente cerrado.")
                     break
-                elif recibido == 1:
+                elif recibido == str(1):
                     respuesta_servidor = direccion_cliente[0] + " envio: " + "El cliente escogio agregar un nuevo contacto"
                     datos_agenda = socket_cliente.recv(1024).decode('utf-8')
                     print(datos_agenda)
