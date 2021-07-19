@@ -71,7 +71,7 @@ try:
             recibido = socket_cliente.recv(1024).decode('utf-8')
             print ("Servidor >> " + recibido)      
             
-        elif opciones == 2:
+        elif opciones == str(2):
             busqueda()
             opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
             if opcionBusqueda == 5: 
@@ -84,7 +84,7 @@ try:
                         if nombre_contact == row[0]:
                             print(','.join(row))
             
-            elif opcionBusqueda == 6:
+            elif opcionBusqueda == str(6):
                 print("Número del contacto: ")
                 telefono_contact = input()
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
@@ -94,7 +94,7 @@ try:
                         if telefono_contact == row[1]:
                             print(','.join(row))
                     
-            elif opcionBusqueda == 7:
+            elif opcionBusqueda == str(7):
                 print("Dirección del contacto: ")
                 direccion_contact = input()
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
@@ -104,10 +104,10 @@ try:
                         if direccion_contact == row[2]:
                             print(','.join(row))
                             
-        elif opciones == 3:
+        elif opciones == str(3):
             eliminar()
             opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
-            if opcionEliminar == 8: 
+            if opcionEliminar == str(8): 
                 print("Nombre del contacto: ")
                 nombre_contact = input()
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
@@ -119,7 +119,7 @@ try:
                             writer.writerow(row)
                 print("contacto eliminado")
                     
-            elif opcionEliminar == 9: 
+            elif opcionEliminar == str(9): 
                 print("Telefono del contacto: ")
                 telefono_contact = input()
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
@@ -131,7 +131,7 @@ try:
                             writer.writerow(row)
                 print("contacto eliminado")
                 
-            elif opcionEliminar == 10: 
+            elif opcionEliminar == str(10): 
                 print("Dirección del contacto: ")
                 direccion_contact = input()
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
@@ -143,7 +143,7 @@ try:
                             writer.writerow(row)
                 print("contacto eliminado")
             
-        elif opciones == 4:
+        elif opciones == str(4):
             break
         recibido = socket_cliente.recv(1024).decode('utf-8')
         print ("Servidor >> " + recibido)

@@ -54,7 +54,8 @@ try:
                 elif recibido == str(1):
                     respuesta_servidor = direccion_cliente[0] + " envio: " + "El cliente escogio agregar un nuevo contacto"
                     datos_agenda = socket_cliente.recv(1024).decode('utf-8')
-                    print(datos_agenda)
+                    print("Datos ingresados: ", datos_agenda)
+                    socket_cliente.send("Datos recibidos".encode("utf-8"))
                 
                 elif recibido == 2:
                     print("El cliente escogio buscar un contacto")
