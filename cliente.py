@@ -59,8 +59,6 @@ try:
             opciones =  int(input("Ingrese la opcion: "))
             socket_cliente.send(opciones.encode("utf-8"))
             if opciones == 1:
-                recibido = socket_cliente.recv(1024).decode('utf-8')
-                print("Servidor >>" + recibido)
                 print("Ingrese el nombre del contacto");
                 nombre_contact      = input()
         
@@ -72,6 +70,8 @@ try:
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
                         writer = csv.writer(f, lineterminator ='\r')
                         writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )
+                recibido = socket_cliente.recv(1024).decode('utf-8')
+                print("Servidor >>" + recibido)
                 
         
             
