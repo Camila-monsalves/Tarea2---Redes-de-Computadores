@@ -74,16 +74,11 @@ try:
         elif opciones == str(2):
             busqueda()
             opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
-            if opcionBusqueda == 5: 
+            if opcionBusqueda == str(5): 
                 print("Nombre del contacto: ")
                 nombre_contact = input()
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
-                    reader = list(csv.reader(f))
-                    writer = csv.writer(f, lineterminator ='\r')
-                    for i, row in enumerate(reader):
-                        if nombre_contact == row[0]:
-                            print(','.join(row))
-            
+                socket_cliente.send(nombre_contact.encode("utf-8"))
+                
             elif opcionBusqueda == str(6):
                 print("Número del contacto: ")
                 telefono_contact = input()

@@ -59,12 +59,13 @@ try:
                     print("Datos ingresados: ", datos_agenda)
                     lista_datos = ast.literal_eval(datos_agenda)
                     agenda.append(lista_datos)
+                    print(agenda)
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
                 
                 elif recibido == str(2):
+                    busqueda = socket_cliente.recv(1024).decode('utf-8')
                     print("El cliente escogio buscar un contacto")
-                    respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
-                    socket_cliente.send(respuesta_servidor.encode("utf-8"))
+                    print(busqueda)
                 
             except socket.error:
                 print ("Conexion terminada abruptamente por el cliente.")
