@@ -43,6 +43,34 @@ try:
 
         while True:
             try:
+                def agenda():
+                    print("AGENDA");
+                    print("Presione '1' Si desea Agregar un nuevo contacto");
+                    print("Presione '2' Si desea Buscar un contacto");
+                    print("Presione '3' Si desea Eliminar un contacto");
+                    print("Presione '4' Si desea Salir");
+    
+                def busqueda():
+                    print("Presione '5' Si desea realizar una busqueda por nombre");
+                    print("Presione '6' Si desea realizar una busqueda por telefono");
+                    print("Presione '7' Si desea realizar una busqueda por direccion");
+    
+                def eliminar():
+                    print("Presione '8' Si desea eliminar por nombre");
+                    print("Presione '9' Si desea eliminar por telefono");
+                    print("Presione '10' Si desea eliminar por direccion");
+    
+                    agendaContact     = []
+                    nombre_contact    = []
+                    telefono_contact  = []
+                    direccion_contact = []
+
+                    opciones       = 0
+                    opcionBusqueda = 0
+                    opcionEliminar = 0
+                    agenda()
+                
+                
                 recibido = socket_cliente.recv(1024).decode('utf-8')
                 print (direccion_cliente[0] + " >> ", recibido)
                 if recibido == 4:
