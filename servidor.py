@@ -69,7 +69,7 @@ try:
                     for i in agenda:
                         print(i)
                         print(i[0])
-                        if i[0] == busqueda:
+                        if str(i[0]) == str(busqueda):
                             socket_cliente.send(str(i).encode("utf-8"))
                         else:
                             socket_cliente.send("Cliente no encontrado".encode("utf-8"))
