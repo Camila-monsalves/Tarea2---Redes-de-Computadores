@@ -67,6 +67,8 @@ try:
                     print("El cliente escogio buscar un contacto")
                     print(busqueda)
                     for i in agenda:
+                        print(i)
+                        print(i[0])
                         if i[0] == busqueda:
                             socket_cliente.send(str(i).encode("utf-8"))
                         else:
