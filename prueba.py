@@ -73,7 +73,7 @@ while opciones != 4:
         opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
         if opcionEliminar == 8: 
             print("Nombre del contacto: ")
-            nombre_contact: str(input())
+            nombre_contact = input()
             with open('agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
             with open('agenda.csv', 'w') as f:
@@ -81,4 +81,17 @@ while opciones != 4:
                 for i, row in enumerate(reader):
                     if nombre_contact != row[0]:
                         writer.writerow(row)
-                        print("contacto eliminado")
+            print("contacto eliminado")
+            
+        elif opcionEliminar == 9: 
+            print("Telefono del contacto: ")
+            telefono_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+            with open('agenda.csv', 'w') as f:
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if telefono_contact != row[1]:
+                        writer.writerow(row)
+            print("contacto eliminado")
+                    
