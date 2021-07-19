@@ -34,7 +34,7 @@ socket_servidor.bind((IP, PUERTO))
 socket_servidor.listen(2)
 
 print ("Servicio configurado en puerto ", PUERTO, "en el servidor ", IP, "\n")
-
+agenda = []
 try:
     while True:
         print ("Esperando conexión de un cliente ...")
@@ -57,9 +57,8 @@ try:
                     respuesta_servidor = direccion_cliente[0] + " envio: " + "El cliente escogio agregar un nuevo contacto"
                     datos_agenda = socket_cliente.recv(1024).decode('utf-8')
                     print("Datos ingresados: ", datos_agenda)
-                    lista_datos = []
-                    lista_datos.append(ast.literal_eval(datos_agenda))
-                    
+                    lista_datos = ast.literal_eval(datos_agenda)
+                    agenda.append(lista_datos)
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
                 
                 elif recibido == str(2):
