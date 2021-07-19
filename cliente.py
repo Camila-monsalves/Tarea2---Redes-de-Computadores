@@ -145,9 +145,7 @@ try:
             
         elif opciones == str(4):
             break
-        recibido = socket_cliente.recv(1024).decode('utf-8')
-        print ("Servidor >> " + recibido)
-
+        
 except socket.error:
     print ("Se perdio la conexion con el servidor.")
 except KeyboardInterrupt:
