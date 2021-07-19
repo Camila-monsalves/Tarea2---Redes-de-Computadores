@@ -59,9 +59,7 @@ try:
                     print("Datos ingresados: ", datos_agenda)
                     lista_datos = []
                     lista_datos.append(ast.literal_eval(datos_agenda))
-                    with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w', newline='') as f:
-                        write = csv.writer(f, delimiter=';')
-                        write.writerows(lista_datos)
+                    
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
                 
                 elif recibido == str(2):
