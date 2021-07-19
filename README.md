@@ -42,7 +42,7 @@ Presione Enter y debería existir una carpeta llamada Tarea2-Redes-de-Computador
 	Verificamos que existen los archivos 
 	cliente.py
 	servidor.py
-	agenda_tarea2.csv
+	agenda.csv
 
 	b3) Para compilar primero debemos instalar algunas librerias que son necesarias, por lo que tendremos que poner los siguientes comandos 
 
@@ -50,16 +50,24 @@ Presione Enter y debería existir una carpeta llamada Tarea2-Redes-de-Computador
 	sudo add-apt-repository universe
 	sudo apt-get update
 
+	
+	## SERVIDOR
+	Primero que todo debemos compilar el Servidor para poder ejecutar de buena manera la aplicación
+	En Ubuntu al servidor.py le asiganmos un puerto (se sugiere puerto 8080) y lo ejecutamos de la siguiente manera
+	
+	
+	python3 servidor.py (Puerto de servicio)
+
+	
 	## CLIENTE 
-	Ahora podremos compilar el cliente.py especificando su dirección ip "Espacio" Puerto
+	Luego compilaremos el cliente en otro terminal de Ubuntu
+	Ahora haremos el mismo ejercicio con el cliente.py especificando su dirección ip y Puerto de servicio como se puede ver abajo
 
 	python3 cliente.py (Dirección IP + Puerto de servicio)
 
-	## SERVIDOR
-	En paralelo abrimos otro Ubuntu y seguimos de igual manera ejecutamos el servidor.py y le asiganmos un puerto, entonces ejecutamos lo siguiente
-	se sugiere puerto 8080
 	
-	python3 servidor.py (Puerto de servicio)
+
+
 
 
 
