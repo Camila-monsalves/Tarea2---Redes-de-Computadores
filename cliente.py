@@ -58,6 +58,8 @@ try:
         while opciones != 4:
             opciones =  int(input("Ingrese la opcion: "))
             if opciones == 1:
+                recibido = socket_cliente.recv(1024).decode('utf-8')
+                print("Servidor >>" + recibido)
                 print("Ingrese el nombre del contacto");
                 nombre_contact      = input()
         
@@ -69,11 +71,12 @@ try:
                 with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
                         writer = csv.writer(f, lineterminator ='\r')
                         writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )
-                recibido = socket_cliente.recv(1024).decode('utf-8')
-                print("Servidor >>" + recibido)
+                
         
             
             elif opciones == 2:
+                recibido = socket_cliente.recv(1024).decode('utf-8')
+                print("Servidor >>" + recibido)
                 busqueda()
                 opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
                 if opcionBusqueda == 5: 
@@ -107,10 +110,10 @@ try:
                             if direccion_contact == row[2]:
                                 print(','.join(row))
                         
-                recibido = socket_cliente.recv(1024).decode('utf-8')
-                print("Servidor >>" + recibido)
         
             elif opciones == 3:
+                recibido = socket_cliente.recv(1024).decode('utf-8')
+                print("Servidor >>" + recibido)
                 eliminar()
                 opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
                 if opcionEliminar == 8: 
@@ -149,8 +152,7 @@ try:
                                 writer.writerow(row)
                     print("contacto eliminado")
         
-                recibido = socket_cliente.recv(1024).decode('utf-8')
-                print("Servidor >>" + recibido)
+                
 
 
 except socket.error:
