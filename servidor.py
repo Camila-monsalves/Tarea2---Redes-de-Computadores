@@ -52,9 +52,9 @@ try:
                     print ("Conexion con el cliente cerrado.")
                     break
                 elif recibido == 1:
-                    print("El cliente escogio agregar un nuevo contacto")
                     respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
                     socket_cliente.send(respuesta_servidor.encode("utf-8"))
+                    print("El cliente escogio agregar un nuevo contacto")
                 
                 elif recibido == 2:
                     print("El cliente escogio buscar un contacto")
