@@ -53,8 +53,8 @@ try:
                     break
                 elif recibido == 1:
                     respuesta_servidor = direccion_cliente[0] + " envio: " + "El cliente escogio agregar un nuevo contacto"
-                    socket_cliente.send(respuesta_servidor.encode("utf-8"))
-                    print("")
+                    datos_agenda = socket_cliente.recv(1024).decode('utf-8')
+                    print(datos_agenda)
                 
                 elif recibido == 2:
                     print("El cliente escogio buscar un contacto")

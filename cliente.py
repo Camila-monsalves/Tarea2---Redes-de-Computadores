@@ -68,6 +68,11 @@ try:
             with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
                     writer = csv.writer(f, lineterminator ='\r')
                     writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )  
+                    socket_cliente.send(mensaje.encode("utf-8"))
+            lista_datos = [nombre_contact, telefono_contact, direccion_contact]
+            socket_cliente.send(str(lista_datos).encode("utf-8"))
+            recibido = socket_cliente.recv(1024).decode('utf-8')
+            print ("Servidor >> " + recibido)      
             
         elif opciones == 2:
             busqueda()
