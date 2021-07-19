@@ -47,9 +47,19 @@ try:
 
         while True:
             try:
+                connection = socket_servidor.accept()
                 recibido = socket_cliente.recv(1024).decode('utf-8')
                 print (direccion_cliente[0] + " >> ", recibido)
-                if recibido == "finalizar()":
+                nombre_contact = connection.recv(1024)
+                nombre_contact = nombre_contact.decode()
+                if recibido == 1:
+                    print("El Cliente escogio agregar un contacto")
+                if recibido == 2:
+                    print("El Cliente está buscando a :", nombre_contact)
+                if recibido == 3:
+                    print("El Cliente eliminó a:", nombre_contact)
+                
+                if recibido == 4:
                     print ("Cliente finalizo la conexion.")
                     print ("Cerrando la conexion con el cliente ...")
                     socket_cliente.close()
