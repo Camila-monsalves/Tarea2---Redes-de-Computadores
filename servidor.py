@@ -59,7 +59,7 @@ try:
                     print("Datos ingresados: ", datos_agenda)
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
                     lista_datos = ast.literal_eval(datos_agenda)
-                    with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
+                    with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
                         writer = csv.writer(f, lineterminator ='\r')
                         writer.writerow( (lista_datos[0], lista_datos[1], lista_datos[2]) )  
                     print(lista_datos)
