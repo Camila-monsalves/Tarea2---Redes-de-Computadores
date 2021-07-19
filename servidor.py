@@ -1,7 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# Programa Servidor
-
 import socket
 import sys
 
@@ -47,26 +43,24 @@ try:
 
         while True:
             try:
-                connection = socket_servidor.accept()
                 recibido = socket_cliente.recv(1024).decode('utf-8')
                 print (direccion_cliente[0] + " >> ", recibido)
-                nombre_contact = connection.recv(1024)
-                nombre_contact = nombre_contact.decode()
-                if recibido == 1:
-                    print("El Cliente escogio agregar un contacto")
-                if recibido == 2:
-                    print("El Cliente está buscando a :", nombre_contact)
-                if recibido == 3:
-                    print("El Cliente eliminó a:", nombre_contact)
-                
                 if recibido == 4:
                     print ("Cliente finalizo la conexion.")
                     print ("Cerrando la conexion con el cliente ...")
                     socket_cliente.close()
                     print ("Conexion con el cliente cerrado.")
                     break
-                respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
-                socket_cliente.send(respuesta_servidor.encode("utf-8"))
+                elif recibido == 1:
+                    print("El cliente escogio agregar un nuevo contacto")
+                    respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
+                    socket_cliente.send(respuesta_servidor.encode("utf-8"))
+                
+                elif recibido == 2:
+                    print("El cliente escogio buscar un contacto")
+                    respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
+                    socket_cliente.send(respuesta_servidor.encode("utf-8"))
+                
             except socket.error:
                 print ("Conexion terminada abruptamente por el cliente.")
                 print ("Cerrando conexion con el cliente ...")
