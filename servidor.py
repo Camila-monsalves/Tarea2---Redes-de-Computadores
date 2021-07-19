@@ -56,6 +56,8 @@ try:
                     datos_agenda = socket_cliente.recv(1024).decode('utf-8')
                     print("Datos ingresados: ", datos_agenda)
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
+                    lista_datos = list(datos_agenda)
+                    print(lista_datos)
                 
                 elif recibido == 2:
                     print("El cliente escogio buscar un contacto")
