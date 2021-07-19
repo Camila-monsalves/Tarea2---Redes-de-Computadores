@@ -62,7 +62,7 @@ try:
                     with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w', newline='') as f:
                         write = csv.writer(f, delimiter=';')
                         write.writerows(lista_datos)
-                        socket_cliente.send("Datos recibidos".encode("utf-8"))
+                    socket_cliente.send("Datos recibidos".encode("utf-8"))
                 
                 elif recibido == str(2):
                     print("El cliente escogio buscar un contacto")
