@@ -51,7 +51,7 @@ while opciones != 4:
         if opcionBusqueda == 5: 
             print("Nombre del contacto: ")
             nombre_contact = input()
-            with open('/agenda.csv', 'r') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
                 writer = csv.writer(f, lineterminator ='\r')
                 for i, row in enumerate(reader):
@@ -61,7 +61,7 @@ while opciones != 4:
         elif opcionBusqueda == 6:
             print("Número del contacto: ")
             telefono_contact = input()
-            with open('/agenda.csv', 'r') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
                 writer = csv.writer(f, lineterminator ='\r')
                 for i, row in enumerate(reader):
@@ -71,7 +71,7 @@ while opciones != 4:
         elif opcionBusqueda == 7:
             print("Dirección del contacto: ")
             direccion_contact = input()
-            with open('/agenda.csv', 'r') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
                 writer = csv.writer(f, lineterminator ='\r')
                 for i, row in enumerate(reader):
@@ -84,9 +84,9 @@ while opciones != 4:
         if opcionEliminar == 8: 
             print("Nombre del contacto: ")
             nombre_contact = input()
-            with open('agenda.csv', 'r') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
-            with open('agenda.csv', 'w') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
                 writer = csv.writer(f, lineterminator ='\r')
                 for i, row in enumerate(reader):
                     if nombre_contact != row[0]:
@@ -96,9 +96,9 @@ while opciones != 4:
         elif opcionEliminar == 9: 
             print("Telefono del contacto: ")
             telefono_contact = input()
-            with open('agenda.csv', 'r') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
-            with open('agenda.csv', 'w') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
                 writer = csv.writer(f, lineterminator ='\r')
                 for i, row in enumerate(reader):
                     if telefono_contact != row[1]:
@@ -108,9 +108,9 @@ while opciones != 4:
         elif opcionEliminar == 10: 
             print("Dirección del contacto: ")
             direccion_contact = input()
-            with open('agenda.csv', 'r') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
                 reader = list(csv.reader(f))
-            with open('agenda.csv', 'w') as f:
+            with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
                 writer = csv.writer(f, lineterminator ='\r')
                 for i, row in enumerate(reader):
                     if direccion_contact != row[2]:
