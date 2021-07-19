@@ -45,7 +45,7 @@ try:
             try:
                 recibido = socket_cliente.recv(1024).decode('utf-8')
                 print (direccion_cliente[0] + " >> ", recibido)
-                if recibido == 4:
+                if recibido == str(4):
                     print ("Cliente finalizo la conexion.")
                     print ("Cerrando la conexion con el cliente ...")
                     socket_cliente.close()
