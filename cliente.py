@@ -57,23 +57,22 @@ while opciones != 4:
         nombre_contact      = input() """
         nombre_contact =  str(input("Ingrese el nombre del contacto: "))
         socket_cliente.send(nombre_contact.encode("utf-8"))
-        
+        print ("Servidor >> " + recibido)  
         telefono_contact =  str(input("Ingrese el nombre del contacto: "))
         socket_cliente.send(telefono_contact.encode("utf-8"))
         """ print("Ingrese el numero de teléfono del contacto");
         telefono_contact    = input() """
         direccion_contact =  str(input("Ingrese el nombre del contacto: "))
         socket_cliente.send(direccion_contact.encode("utf-8"))
+        print ("Servidor >> " + recibido)  
         """ print("Ingrese la direccion del contacto");
         direccion_contact   = input()  """
         with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
                 writer = csv.writer(f, lineterminator ='\r')
                 writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )
         recibido = socket_cliente.recv(1024).decode('utf-8')
-        print ("Servidor >> " + recibido)
+        print ("Servidor >> " + recibido)     
         
-        
-            
     elif opciones == 2:
         busqueda()
         opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
