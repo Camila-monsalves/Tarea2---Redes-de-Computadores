@@ -21,7 +21,7 @@ except:
     sys.exit(0)
          
 
-print ("\nConectado, escriba finalizar() para terminar la conexión.\n")
+print ("\nConectado\n")
 
 def agenda():
     print("AGENDA");
