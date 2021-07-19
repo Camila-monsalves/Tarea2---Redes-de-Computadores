@@ -62,7 +62,7 @@ try:
             print ("Servidor >> " + recibido)      
             
         elif opciones == str(2):
-            print("Nombre del contacto: ")
+            print("Nombre del contacto que desea buscar: ")
             nombre_contact = input()
             socket_cliente.send(nombre_contact.encode("utf-8"))
             datos = socket_cliente.recv(1024).decode('utf-8')
@@ -70,7 +70,7 @@ try:
                 
                             
         elif opciones == str(3):
-            print("Nombre del contacto: ")
+            print("Nombre del contacto que desea eliminar: ")
             nombre_contact = input()
             socket_cliente.send(nombre_contact.encode("utf-8"))
             datos = socket_cliente.recv(1024).decode('utf-8')

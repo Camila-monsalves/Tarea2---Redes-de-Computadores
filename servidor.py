@@ -82,7 +82,7 @@ try:
                 elif recibido == str(3):
                     eliminar = socket_cliente.recv(1024).decode('utf-8')
                     print("El cliente escogio buscar un contacto")
-                    print("nombre a buscar", eliminar)
+                    print("nombre a eliminar", eliminar)
                     bandera = False
                     for i in agenda:
                         print(i)
