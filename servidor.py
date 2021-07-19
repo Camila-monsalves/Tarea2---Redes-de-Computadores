@@ -1,6 +1,7 @@
 import socket
 import sys
 import ast
+import csv
 
 def get_ip():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -58,9 +59,12 @@ try:
                     print("Datos ingresados: ", datos_agenda)
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
                     lista_datos = ast.literal_eval(datos_agenda)
+                    with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
+                        writer = csv.writer(f, lineterminator ='\r')
+                        writer.writerow( (lista_datos[0], lista_datos[1], lista_datos[2]) )  
                     print(lista_datos)
                 
-                elif recibido == 2:
+                elif recibido == str(2):
                     print("El cliente escogio buscar un contacto")
                     respuesta_servidor = direccion_cliente[0] + " envio: " + recibido
                     socket_cliente.send(respuesta_servidor.encode("utf-8"))
