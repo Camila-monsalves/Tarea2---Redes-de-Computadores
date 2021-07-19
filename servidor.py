@@ -67,11 +67,10 @@ try:
                     print("El cliente escogio buscar un contacto")
                     print(busqueda)
                     for i in agenda:
-                        for j in i:
-                            if j[0] == busqueda:
-                                socket_cliente.send(str(j).encode("utf-8"))
-                            else:
-                                socket_cliente.send("Cliente no encontrado".encode("utf-8"))
+                        if i[0] == busqueda:
+                            socket_cliente.send(str(i).encode("utf-8"))
+                        else:
+                            socket_cliente.send("Cliente no encontrado".encode("utf-8"))
                 
             except socket.error:
                 print ("Conexion terminada abruptamente por el cliente.")
