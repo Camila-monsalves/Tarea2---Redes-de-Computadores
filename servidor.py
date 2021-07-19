@@ -74,6 +74,7 @@ try:
                             bandera = True
                     if bandera:
                         socket_cliente.send(str(i).encode("utf-8"))
+                        bandera = False
                     else:
                         socket_cliente.send("Cliente no encontrado".encode("utf-8"))
                 
