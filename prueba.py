@@ -14,10 +14,9 @@ def busqueda():
     print("Presione '7' Si desea realizar una busqueda por direccion");
     
 def eliminar():
-    print("'Presione 8' Si desea Eliminar por nombre");
-    print("'Presione 9' Si desea Eliminar por número");
-
-
+    print("Presione '8' Si desea eliminar por nombre");
+    print("Presione '9' Si desea eliminar por telefono");
+    
 agendaContact     = []
 nombre_contact    = []
 telefono_contact  = []
@@ -25,6 +24,7 @@ direccion_contact = []
 
 opciones       = 0
 opcionBusqueda = 0
+opcionEliminar = 0
 agenda()
 
 while opciones != 4:
@@ -67,20 +67,18 @@ while opciones != 4:
                 print("Nombre:", direccion_contact[nombre_contact]);
             else:
                 print("La busqueda no arroja nada");
+                
     elif opciones == 3:
         eliminar()
-        opcionEliminar = input("")
-        if opcionEliminar == 8:
-            nombre_contact = input("Nombre: ")
-            if nombre_contact not in agendaContact[0:100]:
-                print('Contacto eliminado con exito');
-            else:
-                print("No existe el nombre a eliminar");
-                
-        elif opcionEliminar == 9:
-            telefono_contact = input("Número: ")
-            if telefono_contact not in agendaContact[0:100]:
-                print('Contacto eliminado con exito');
-            else:
-                print("No existe el nombre a eliminar");
-                
+        opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
+        if opcionEliminar == 8: 
+            print("Nombre del contacto: ")
+            nombre_contact: str(input())
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+            with open('agenda.csv', 'w') as f:
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if nombre_contact != row[0]:
+                        writer.writerow(row)
+                        print("contacto eliminado")
