@@ -29,17 +29,7 @@ def agenda():
     print("Presione '2' Si desea Buscar un contacto");
     print("Presione '3' Si desea Eliminar un contacto");
     print("Presione '4' Si desea Salir");
-    
-def busqueda():
-    print("Presione '5' Si desea realizar una busqueda por nombre");
-    print("Presione '6' Si desea realizar una busqueda por telefono");
-    print("Presione '7' Si desea realizar una busqueda por direccion");
-    
-def eliminar():
-    print("Presione '8' Si desea eliminar por nombre");
-    print("Presione '9' Si desea eliminar por telefono");
-    print("Presione '10' Si desea eliminar por direccion");
-    
+        
 agendaContact     = []
 nombre_contact    = []
 telefono_contact  = []
@@ -72,73 +62,20 @@ try:
             print ("Servidor >> " + recibido)      
             
         elif opciones == str(2):
-            busqueda()
-            opcionBusqueda = str(input("¿Por qué opción desea buscar?\n"));
-            if opcionBusqueda == str(5): 
-                print("Nombre del contacto: ")
-                nombre_contact = input()
-                socket_cliente.send(nombre_contact.encode("utf-8"))
-                datos = socket_cliente.recv(1024).decode('utf-8')
-                print(datos)
+            print("Nombre del contacto: ")
+            nombre_contact = input()
+            socket_cliente.send(nombre_contact.encode("utf-8"))
+            datos = socket_cliente.recv(1024).decode('utf-8')
+            print(datos)
                 
-            elif opcionBusqueda == str(6):
-                print("Número del contacto: ")
-                telefono_contact = input()
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
-                    reader = list(csv.reader(f))
-                    writer = csv.writer(f, lineterminator ='\r')
-                    for i, row in enumerate(reader):
-                        if telefono_contact == row[1]:
-                            print(','.join(row))
-                    
-            elif opcionBusqueda == str(7):
-                print("Dirección del contacto: ")
-                direccion_contact = input()
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
-                    reader = list(csv.reader(f))
-                    writer = csv.writer(f, lineterminator ='\r')
-                    for i, row in enumerate(reader):
-                        if direccion_contact == row[2]:
-                            print(','.join(row))
                             
         elif opciones == str(3):
-            eliminar()
-            opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
-            if opcionEliminar == str(8): 
-                print("Nombre del contacto: ")
-                nombre_contact = input()
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
-                    reader = list(csv.reader(f))
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
-                    writer = csv.writer(f, lineterminator ='\r')
-                    for i, row in enumerate(reader):
-                        if nombre_contact != row[0]:
-                            writer.writerow(row)
-                print("contacto eliminado")
-                    
-            elif opcionEliminar == str(9): 
-                print("Telefono del contacto: ")
-                telefono_contact = input()
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
-                    reader = list(csv.reader(f))
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
-                    writer = csv.writer(f, lineterminator ='\r')
-                    for i, row in enumerate(reader):
-                        if telefono_contact != row[1]:
-                            writer.writerow(row)
-                print("contacto eliminado")
-                
-            elif opcionEliminar == str(10): 
-                print("Dirección del contacto: ")
-                direccion_contact = input()
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'r') as f:
-                    reader = list(csv.reader(f))
-                with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
-                    writer = csv.writer(f, lineterminator ='\r')
-                    for i, row in enumerate(reader):
-                        if direccion_contact != row[2]:
-                            writer.writerow(row)
-                print("contacto eliminado")
+            print("Nombre del contacto: ")
+            nombre_contact = input()
+            socket_cliente.send(nombre_contact.encode("utf-8"))
+            datos = socket_cliente.recv(1024).decode('utf-8')
+            print(datos)
+
             
         elif opciones == str(4):
             break

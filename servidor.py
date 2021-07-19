@@ -79,6 +79,24 @@ try:
                     else:
                         socket_cliente.send("Cliente no encontrado".encode("utf-8"))
                 
+                elif recibido == str(3):
+                    eliminar = socket_cliente.recv(1024).decode('utf-8')
+                    print("El cliente escogio buscar un contacto")
+                    print("nombre a buscar", eliminar)
+                    bandera = False
+                    for i in agenda:
+                        print(i)
+                        print(i[0])
+                        if str(i[0]) == str(eliminar):
+                            agenda.remove(i)
+                            bandera = True
+                            break
+                    if bandera:
+                        socket_cliente.send("Cliente eliminado con exito".encode("utf-8"))
+                        bandera = False
+                    else:
+                        socket_cliente.send("Cliente no encontrado".encode("utf-8"))
+            
             except socket.error:
                 print ("Conexion terminada abruptamente por el cliente.")
                 print ("Cerrando conexion con el cliente ...")
