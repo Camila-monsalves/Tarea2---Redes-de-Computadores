@@ -21,7 +21,7 @@ except:
     sys.exit(0)
          
 
-print ("\nConectado\n")
+print ("\nConectado, escriba finalizar() para terminar la conexión.\n")
 
 def agenda():
     print("AGENDA");
@@ -51,8 +51,7 @@ opcionEliminar = 0
 agenda()
 
 while opciones != 4:
-    opciones =  str(input("Ingrese la opcion: "))
-    socket_cliente.send(opciones.encode("utf-8"))
+    opciones =  int(input("Ingrese la opcion: "))
     if opciones == 1:
         print("Ingrese el nombre del contacto");
         nombre_contact      = input()
@@ -64,12 +63,11 @@ while opciones != 4:
         direccion_contact   = input() 
         with open('Tarea2-Redes-de-Computadores/agenda.csv', 'a') as f:
                 writer = csv.writer(f, lineterminator ='\r')
-    recibido = socket_cliente.recv(1024).decode('utf-8')
-    print ("Servidor >> " + recibido)
+                writer.writerow( (nombre_contact, telefono_contact, direccion_contact) )
         
         
             
-    """ elif opciones == 2:
+    elif opciones == 2:
         busqueda()
         opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
         if opcionBusqueda == 5: 
@@ -151,9 +149,9 @@ try:
         if mensaje == "finalizar()":
             break
         recibido = socket_cliente.recv(1024).decode('utf-8')
-        print ("Servidor >> " + recibido) """
+        print ("Servidor >> " + recibido)
 
-""" except socket.error:
+except socket.error:
     print ("Se perdio la conexion con el servidor.")
 except KeyboardInterrupt:
     print ("\nSe interrumpio el cliente con un Control_C.")
@@ -161,4 +159,4 @@ except KeyboardInterrupt:
 finally:
     print ("Terminando conexion con el servidor ...")
     socket_cliente.close()
-    print ("Conexion con el servidor terminado.") """
+    print ("Conexion con el servidor terminado.")
