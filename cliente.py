@@ -55,7 +55,6 @@ while opciones != 4:
     if opciones == 1:
         print("Ingrese el nombre del contacto");
         nombre_contact      = input()
-        print ("Servidor >> " + recibido)  
         
         print("Ingrese el numero de teléfono del contacto");
         telefono_contact    = input()
