@@ -72,6 +72,7 @@ try:
                         print(i[0])
                         if str(i[0]) == str(busqueda):
                             bandera = True
+                            break
                     if bandera:
                         socket_cliente.send(str(i).encode("utf-8"))
                         bandera = False
