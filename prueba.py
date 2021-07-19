@@ -16,6 +16,7 @@ def busqueda():
 def eliminar():
     print("Presione '8' Si desea eliminar por nombre");
     print("Presione '9' Si desea eliminar por telefono");
+    print("Presione '10' Si desea eliminar por direccion");
     
 agendaContact     = []
 nombre_contact    = []
@@ -46,28 +47,37 @@ while opciones != 4:
             
     elif opciones == 2:
         busqueda()
-        opcionBusqueda = input("¿Por qué opción desea buscar?\n");
+        opcionBusqueda = int(input("¿Por qué opción desea buscar?\n"));
         if opcionBusqueda == 5: 
-            nombre_contact = input("Nombre contacto buscado:")
-            if nombre_contact in telefono_contact: 
-                print("Telefono:", telefono_contact[nombre_contact]);
-            else:
-                print("La busqueda no arroja nada");
-                          
-        elif opcionBusqueda == 6:
-            telefono_contact = input("Telefono contacto buscado:")
-            if telefono_contact in nombre_contact:
-                print("Nombre:", nombre_contact[telefono_contact]);
-            else:
-                print("La busqueda no arroja nada");
+            print("Nombre del contacto: ")
+            nombre_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if nombre_contact == row[0]:
+                        print(','.join(row))
         
-        elif opcionBusqueda == 7:
-            direccion_contact = input("Direccion del contacto buscado:")
-            if direccion_contact in nombre_contact:
-                print("Nombre:", direccion_contact[nombre_contact]);
-            else:
-                print("La busqueda no arroja nada");
+        elif opcionBusqueda == 6:
+            print("Número del contacto: ")
+            telefono_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if telefono_contact == row[1]:
+                        print(','.join(row))
                 
+        elif opcionBusqueda == 7:
+            print("Dirección del contacto: ")
+            direccion_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if direccion_contact == row[2]:
+                        print(','.join(row))
+                        
     elif opciones == 3:
         eliminar()
         opcionEliminar = int(input("¿Por qué opción desea eliminar?\n"));
@@ -94,4 +104,19 @@ while opciones != 4:
                     if telefono_contact != row[1]:
                         writer.writerow(row)
             print("contacto eliminado")
-                    
+            
+        elif opcionEliminar == 10: 
+            print("Dirección del contacto: ")
+            direccion_contact = input()
+            with open('agenda.csv', 'r') as f:
+                reader = list(csv.reader(f))
+            with open('agenda.csv', 'w') as f:
+                writer = csv.writer(f, lineterminator ='\r')
+                for i, row in enumerate(reader):
+                    if direccion_contact != row[2]:
+                        writer.writerow(row)
+            print("contacto eliminado")
+        
+    elif opciones == 4:
+        break
+            
