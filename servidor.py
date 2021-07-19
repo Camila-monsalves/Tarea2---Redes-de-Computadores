@@ -59,10 +59,12 @@ try:
                     print("Datos ingresados: ", datos_agenda)
                     
                     lista_datos = ast.literal_eval(datos_agenda)
-                    with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w') as f:
-                        writer = csv.writer(f, lineterminator ='\r')
-                        writer.writerow( (lista_datos[0], lista_datos[1], lista_datos[2]) )  
-                    print(lista_datos)
+                    with open('Tarea2-Redes-de-Computadores/agenda.csv', 'w', newline='') as csvfile:
+                        fieldnames = ['Nombre', 'Telefono', 'Direccion']
+                        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+                        writer.writeheader()
+                        writer.writerow({'Nombre': lista_datos[0], 'Telefono': lista_datos[1], 'Direccion': lista_datos[2]})
                     socket_cliente.send("Datos recibidos".encode("utf-8"))
                 
                 elif recibido == str(2):
