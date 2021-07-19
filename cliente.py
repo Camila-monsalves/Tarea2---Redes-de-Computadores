@@ -56,7 +56,7 @@ try:
         
         socket_cliente.send(opciones.encode("utf-8"))
         
-        if opciones == 1:
+        if opciones == str(1):
             print("Ingrese el nombre del contacto");
             nombre_contact      = input()
             
